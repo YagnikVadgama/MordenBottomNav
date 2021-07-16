@@ -49,7 +49,6 @@ fun MainFunc(
     }
 }
 
-
 @ExperimentalAnimationApi
 @Composable
 fun CustomBottomNavigationItem(item: Screens, isSelected: Boolean, onClick: () -> Unit) {
