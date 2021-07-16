@@ -6,6 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material.Colors
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
@@ -34,15 +35,15 @@ fun MainFunc(
 
     Row(
         modifier = Modifier
-            .background(MaterialTheme.colors.background)
+            .background(Color.Blue)
             .padding(8.dp)
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceAround,
         verticalAlignment = Alignment.CenterVertically
     ) {
 
-        item.forEach {item ->
-            CustomBottomNavigationItem(item = item, isSelected = item.route== route) {
+        item.forEach { item ->
+            CustomBottomNavigationItem(item = item, isSelected = item.route == route) {
                 onItemSelected(item)
             }
         }
@@ -54,9 +55,9 @@ fun MainFunc(
 fun CustomBottomNavigationItem(item: Screens, isSelected: Boolean, onClick: () -> Unit) {
 
     val background =
-        if (isSelected) MaterialTheme.colors.primary.copy(alpha = 0.1f) else Color.Transparent
+        if (isSelected) Color.Yellow else Color.Transparent                       //icon background color
     val contextColor =
-        if (isSelected) MaterialTheme.colors.primary else MaterialTheme.colors.onBackground
+        if (isSelected) Color.DarkGray else Color.White                        //icon color
 
     Box(
         modifier = Modifier
@@ -119,6 +120,9 @@ fun ScreenController(navController: NavHostController) {
         composable("Contact") {
             Contact()
         }
+        composable("Setting") {
+            Setting()
+        }
     }
 }
 
@@ -154,6 +158,15 @@ fun Offers() {
 fun Contact() {
     Text(
         text = "Contact",
+        textAlign = TextAlign.Center,
+        style = TextStyle(color = Color.Black, fontSize = 30.sp)
+    )
+}
+
+@Composable
+fun Setting() {
+    Text(
+        text = "Setting",
         textAlign = TextAlign.Center,
         style = TextStyle(color = Color.Black, fontSize = 30.sp)
     )
