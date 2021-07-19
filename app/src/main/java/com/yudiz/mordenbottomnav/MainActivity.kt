@@ -9,10 +9,12 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
+import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.yudiz.mordenbottomnav.ui.theme.MordenBottomNavTheme
 
@@ -40,6 +42,8 @@ class MainActivity : ComponentActivity() {
                 }
             }*/
 
+            val navController = rememberNavController()
+
             window.statusBarColor=MaterialTheme.colors.primary.toArgb()
             window.navigationBarColor= MaterialTheme.colors.background.toArgb()
 
@@ -57,10 +61,11 @@ class MainActivity : ComponentActivity() {
                         bottomBar = {
                             MainFunc(route = currentScreen.value.route) {
                                 currentScreen.value = it
+                                navController.navigate(it.route)
                             }
                         }
                     ) {
-
+                        ScreenController(navController = navController)
                     }
                 }
             }

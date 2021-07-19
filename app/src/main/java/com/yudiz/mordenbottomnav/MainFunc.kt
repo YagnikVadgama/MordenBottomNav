@@ -6,10 +6,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.Colors
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -55,7 +52,7 @@ fun MainFunc(
 fun CustomBottomNavigationItem(item: Screens, isSelected: Boolean, onClick: () -> Unit) {
 
     val background =
-        if (isSelected) Color.Yellow else Color.Transparent                       //icon background color
+        if (isSelected) Color.Yellow else Color.Transparent                    //icon background color
     val contextColor =
         if (isSelected) Color.DarkGray else Color.White                        //icon color
 
@@ -73,7 +70,7 @@ fun CustomBottomNavigationItem(item: Screens, isSelected: Boolean, onClick: () -
         ) {
             Icon(
                 imageVector = item.icon,
-                contentDescription = null,
+                contentDescription = "Icon",
                 tint = contextColor
             )
 
@@ -107,7 +104,7 @@ fun Prev2() {
 
 @Composable
 fun ScreenController(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "Emi") {
+    NavHost(navController = navController, startDestination = "Home") {
         composable("Home") {
             Home()
         }
@@ -117,8 +114,8 @@ fun ScreenController(navController: NavHostController) {
         composable("Offers") {
             Offers()
         }
-        composable("Contact") {
-            Contact()
+        composable("About") {
+            About()
         }
         composable("Setting") {
             Setting()
@@ -132,7 +129,7 @@ fun Home() {
     Text(
         text = "Home",
         textAlign = TextAlign.Center,
-        style = TextStyle(color = Color.White, fontSize = 30.sp)
+        style = TextStyle(color = Color.Yellow, fontSize = 30.sp)
     )
 }
 
@@ -141,7 +138,7 @@ fun Profile() {
     Text(
         text = "Profile",
         textAlign = TextAlign.Center,
-        style = TextStyle(color = Color.Black, fontSize = 30.sp)
+        style = TextStyle(color = Color.Green, fontSize = 30.sp)
     )
 }
 
@@ -150,16 +147,16 @@ fun Offers() {
     Text(
         text = "Offers",
         textAlign = TextAlign.Center,
-        style = TextStyle(color = Color.White, fontSize = 30.sp)
+        style = TextStyle(color = Color.Yellow, fontSize = 30.sp)
     )
 }
 
 @Composable
-fun Contact() {
+fun About() {
     Text(
-        text = "Contact",
+        text = "About",
         textAlign = TextAlign.Center,
-        style = TextStyle(color = Color.Black, fontSize = 30.sp)
+        style = TextStyle(color = Color.Green, fontSize = 30.sp)
     )
 }
 
@@ -168,6 +165,6 @@ fun Setting() {
     Text(
         text = "Setting",
         textAlign = TextAlign.Center,
-        style = TextStyle(color = Color.Black, fontSize = 30.sp)
+        style = TextStyle(color = Color.Yellow, fontSize = 30.sp)
     )
 }
