@@ -40,7 +40,10 @@ fun MainFunc(
     ) {
 
         item.forEach { item ->
-            CustomBottomNavigationItem(item = item, isSelected = item.route == route) {
+            CustomBottomNavigationItem(
+                item = item,
+                isSelected = item.route == route
+            ) {
                 onItemSelected(item)
             }
         }
@@ -73,7 +76,6 @@ fun CustomBottomNavigationItem(item: Screens, isSelected: Boolean, onClick: () -
                 contentDescription = "Icon",
                 tint = contextColor
             )
-
             AnimatedVisibility(visible = isSelected) {
                 Text(
                     text = item.label,
@@ -101,28 +103,6 @@ fun Prev2() {
 
     }
 }
-
-@Composable
-fun ScreenController(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = "Home") {
-        composable("Home") {
-            Home()
-        }
-        composable("Profile") {
-            Profile()
-        }
-        composable("Offers") {
-            Offers()
-        }
-        composable("About") {
-            About()
-        }
-        composable("Setting") {
-            Setting()
-        }
-    }
-}
-
 
 @Composable
 fun Home() {
